@@ -1,17 +1,19 @@
-CXXFLAGS=-g -O0
+CXXFLAGS=-g -O0 -I../include
 
-HummingBirdServer: HummingBirdServer.o dh_thread.o dh_thread_pool.o
+Humming_bird_server: Humming_bird_server.o dh_thread.o dh_thread_pool.o Humming_bird_work.o
 	$(CXX) -o $@ $^ -pthread
 
 install: HummingBirdServer
 	cp HummingBirdServer ../../bin
 
-HummingBirdServer.o: HummingBirdServer.cpp
+Humming_bird_server.o: Humming_bird_server.cpp
 
 dh_thread.o: dh_thread.cpp
 
-dh_thread_pool: dh_thread_pool.cpp
+dh_thread_pool.o: dh_thread_pool.cpp
+
+Humming_bird_work.o: Humming_bird_work.cpp
 
 .PHONY:
 clean:
-	rm HummingBirdServer.o HummingBirdServer dh_thread.o dh_thread_pool.o
+	rm Humming_bird_server.o Humming_bird_server dh_thread.o dh_thread_pool.o Humming_bird_work.o
