@@ -42,7 +42,6 @@ int initClient(char *ip) {
 		std::cout << strerror(errno) << " in init client" << std::endl;
 		exit(-1);
 	}
-	std::cout << "have fun" << std::endl;
 	return sock_fd;
 }
 
@@ -84,8 +83,6 @@ void * send_filedata(void *args) {
 	struct head * p_fhead = (struct head*)args;
     	//std::cout << "data head ---- fileName: " << p_fhead->fileName << " | id: " << p_fhead->id << " | offset: " << p_fhead->offset << " | bs: " << p_fhead->bs << std::endl;
 	int sock_fd = initClient(SERVER_IP);
-
-	std::cout << "here~" << std::endl;
 	/* send type and block header*/
 	char send_buf[100] = {0};
 	memset(send_buf, 0, 100);
